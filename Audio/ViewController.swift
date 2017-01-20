@@ -67,11 +67,15 @@ class ViewController: UIViewController {
     }
     
     func startTimer() {
-        progressUpdateTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateProgressBar) , userInfo: nil, repeats: true)
+        if !progressUpdateTimer.isValid {
+            progressUpdateTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateProgressBar) , userInfo: nil, repeats: true)
+        }
     }
     
     func stopTimer() {
-        progressUpdateTimer.invalidate()
+        if progressUpdateTimer.isValid {
+            progressUpdateTimer.invalidate()
+        }
     }
 
     @IBAction func didPressPlayPause(_ sender: UIBarButtonItem) {
@@ -90,9 +94,11 @@ class ViewController: UIViewController {
     
     @IBAction func didPressFastForward(_ sender: UIBarButtonItem) {
         currentPlaybackRate = fastForwardRate
-        toolbar.items![2] = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(didPressPlayPause))
-        audioPlayer.pause()
-        audioPlayer.play()
+        if !audioPlayer.isPlaying {
+            toolbar.items![2] = UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(didPressPlayPause))
+            audioPlayer.play()
+            startTimer()
+        }
     }
     
     @IBAction func didPressRewind(_ sender: UIBarButtonItem) {
