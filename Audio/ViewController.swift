@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     }
     
     func updateProgressBar() {
-        progressBar.value = Float(audioPlayer.duration * audioPlayer.currentTime / audioPlayer.duration)
+        progressBar.value = Float(audioPlayer.currentTime)
         
         currentTimeLabel.text = audioPlayer.currentTime.timeString
         remainingTimeLabel.text = (audioPlayer.duration - audioPlayer.currentTime).timeString
