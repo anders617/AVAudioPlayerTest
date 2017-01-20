@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet var currentTimeLabel: UILabel!
     @IBOutlet var remainingTimeLabel: UILabel!
     @IBOutlet var progressBar: UISlider!
+    @IBOutlet var playPauseButton: UIBarButtonItem!
+    @IBOutlet var toolbar: UIToolbar!
     
     var progressUpdateTimer:Timer = Timer()
     var audioPlayer: AVAudioPlayer!
@@ -65,36 +67,43 @@ class ViewController: UIViewController {
     }
     
     func startTimer() {
-        progressUpdateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgressBar) , userInfo: nil, repeats: true)
+        progressUpdateTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateProgressBar) , userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
         progressUpdateTimer.invalidate()
     }
 
-    @IBAction func didPressPlay(_ sender: UIButton) {
-        currentPlaybackRate = playRate
-        audioPlayer.play()
-        startTimer()
-    }
-
-    @IBAction func didPressPause(_ sender: UIButton) {
-        audioPlayer.pause()
-        currentPlaybackRate = playRate
-        stopTimer()
+    @IBAction func didPressPlayPause(_ sender: UIBarButtonItem) {
+        if audioPlayer.isPlaying {
+            toolbar.items![2] = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(didPressPlayPause))
+            audioPlayer.pause()
+            currentPlaybackRate = playRate
+            stopTimer()
+        } else {
+            toolbar.items![2] = UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(didPressPlayPause))
+            currentPlaybackRate = playRate
+            audioPlayer.play()
+            startTimer()
+        }
     }
     
-    @IBAction func didPressFastForward(_ sender: UIButton) {
+    @IBAction func didPressFastForward(_ sender: UIBarButtonItem) {
         currentPlaybackRate = fastForwardRate
+        toolbar.items![2] = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(didPressPlayPause))
+        audioPlayer.pause()
         audioPlayer.play()
     }
     
-    @IBAction func didPressRewind(_ sender: UIButton) {
+    @IBAction func didPressRewind(_ sender: UIBarButtonItem) {
         
     }
     
     @IBAction func progressBarDidChange(_ sender: UISlider) {
         audioPlayer.currentTime = TimeInterval(sender.value)
+        
+        currentTimeLabel.text = audioPlayer.currentTime.timeString
+        remainingTimeLabel.text = (audioPlayer.duration - audioPlayer.currentTime).timeString
     }
 }
 

@@ -22,8 +22,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fet-V8-egO">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6WO-r0-meC"/>
+                                    <barButtonItem systemItem="rewind" id="kJK-p5-LuV">
+                                        <connections>
+                                            <action selector="didPressRewind:" destination="BYZ-38-t0r" id="VBb-lJ-du7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="play" id="ffw-cC-g2l">
+                                        <connections>
+                                            <action selector="didPressPlayPause:" destination="BYZ-38-t0r" id="h3O-qC-hIc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="fastForward" id="FKS-UJ-GhA">
+                                        <connections>
+                                            <action selector="didPressFastForward:" destination="BYZ-38-t0r" id="uvQ-KX-VBp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="i2e-Im-rRt"/>
+                                </items>
+                            </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmh-3q-QSA">
-                                <rect key="frame" x="16" y="397" width="80" height="20.5"/>
+                                <rect key="frame" x="16" y="304" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="63i-9U-UCn"/>
                                 </constraints>
@@ -32,7 +54,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrd-kf-6yM">
-                                <rect key="frame" x="279" y="396.5" width="80" height="20.5"/>
+                                <rect key="frame" x="279" y="304" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="mLD-es-jmE"/>
                                 </constraints>
@@ -40,41 +62,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zfd-8b-lIa">
-                                <rect key="frame" x="143" y="273" width="89" height="120"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-mj-aBS">
-                                        <rect key="frame" x="0.0" y="0.0" width="89" height="30"/>
-                                        <state key="normal" title="Play"/>
-                                        <connections>
-                                            <action selector="didPressPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WX9-9G-RNE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ5-Ss-IQb">
-                                        <rect key="frame" x="0.0" y="30" width="89" height="30"/>
-                                        <state key="normal" title="Pause"/>
-                                        <connections>
-                                            <action selector="didPressPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E25-6a-hls"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-eG-H2s">
-                                        <rect key="frame" x="0.0" y="60" width="89" height="30"/>
-                                        <state key="normal" title="Fast Forward"/>
-                                        <connections>
-                                            <action selector="didPressFastForward:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NkH-HF-xPy"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJk-Kx-DLm">
-                                        <rect key="frame" x="0.0" y="90" width="89" height="30"/>
-                                        <state key="normal" title="Rewind"/>
-                                        <connections>
-                                            <action selector="didPressRewind:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xYy-Dm-12w"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-1b-1mf">
-                                <rect key="frame" x="14" y="425" width="347" height="31"/>
+                                <rect key="frame" x="14" y="332" width="347" height="31"/>
                                 <connections>
                                     <action selector="progressBarDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="ve5-pJ-zO8"/>
                                 </connections>
@@ -82,21 +71,24 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zfd-8b-lIa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8QD-8d-P27"/>
+                            <constraint firstItem="Nmh-3q-QSA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="284" id="9Pt-Mg-Zaf"/>
                             <constraint firstItem="DoX-1b-1mf" firstAttribute="trailing" secondItem="Nrd-kf-6yM" secondAttribute="trailing" id="9Yq-Vf-tWO"/>
-                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="zfd-8b-lIa" secondAttribute="bottom" constant="32" id="Ote-Mp-Uc2"/>
+                            <constraint firstItem="Fet-V8-egO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="G0b-Jz-sjU"/>
                             <constraint firstItem="Nmh-3q-QSA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Pxn-Z9-3LZ"/>
-                            <constraint firstItem="zfd-8b-lIa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W1b-uA-4IS"/>
-                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="Nrd-kf-6yM" secondAttribute="bottom" constant="8" id="Z0g-7j-360"/>
-                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="Nmh-3q-QSA" secondAttribute="bottom" constant="8" id="dDY-cd-tjx"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="Nrd-kf-6yM" secondAttribute="bottom" constant="7" id="Z0g-7j-360"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="Nmh-3q-QSA" secondAttribute="bottom" constant="7" id="dDY-cd-tjx"/>
                             <constraint firstItem="DoX-1b-1mf" firstAttribute="leading" secondItem="Nmh-3q-QSA" secondAttribute="leading" id="gP3-nq-nzm"/>
                             <constraint firstItem="DoX-1b-1mf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h5m-8b-KKB"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="centerX" secondItem="Fet-V8-egO" secondAttribute="centerX" id="i3z-pP-g6v"/>
+                            <constraint firstItem="Fet-V8-egO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lJG-4h-a6C"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currentTimeLabel" destination="Nmh-3q-QSA" id="fdj-rN-LqT"/>
+                        <outlet property="playPauseButton" destination="ffw-cC-g2l" id="rdc-Mj-q1v"/>
                         <outlet property="progressBar" destination="DoX-1b-1mf" id="MX8-Kg-Xh6"/>
                         <outlet property="remainingTimeLabel" destination="Nrd-kf-6yM" id="P82-Iw-WFY"/>
+                        <outlet property="toolbar" destination="Fet-V8-egO" id="L08-eh-v42"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
