@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Audio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,87 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmh-3q-QSA">
+                                <rect key="frame" x="16" y="397" width="80" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="63i-9U-UCn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrd-kf-6yM">
+                                <rect key="frame" x="279" y="396.5" width="80" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="mLD-es-jmE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zfd-8b-lIa">
+                                <rect key="frame" x="143" y="273" width="89" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-mj-aBS">
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="didPressPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WX9-9G-RNE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ5-Ss-IQb">
+                                        <rect key="frame" x="0.0" y="30" width="89" height="30"/>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="didPressPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E25-6a-hls"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-eG-H2s">
+                                        <rect key="frame" x="0.0" y="60" width="89" height="30"/>
+                                        <state key="normal" title="Fast Forward"/>
+                                        <connections>
+                                            <action selector="didPressFastForward:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NkH-HF-xPy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJk-Kx-DLm">
+                                        <rect key="frame" x="0.0" y="90" width="89" height="30"/>
+                                        <state key="normal" title="Rewind"/>
+                                        <connections>
+                                            <action selector="didPressRewind:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xYy-Dm-12w"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-1b-1mf">
+                                <rect key="frame" x="14" y="425" width="347" height="31"/>
+                                <connections>
+                                    <action selector="progressBarDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="ve5-pJ-zO8"/>
+                                </connections>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zfd-8b-lIa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8QD-8d-P27"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="trailing" secondItem="Nrd-kf-6yM" secondAttribute="trailing" id="9Yq-Vf-tWO"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="zfd-8b-lIa" secondAttribute="bottom" constant="32" id="Ote-Mp-Uc2"/>
+                            <constraint firstItem="Nmh-3q-QSA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Pxn-Z9-3LZ"/>
+                            <constraint firstItem="zfd-8b-lIa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W1b-uA-4IS"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="Nrd-kf-6yM" secondAttribute="bottom" constant="8" id="Z0g-7j-360"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="top" secondItem="Nmh-3q-QSA" secondAttribute="bottom" constant="8" id="dDY-cd-tjx"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="leading" secondItem="Nmh-3q-QSA" secondAttribute="leading" id="gP3-nq-nzm"/>
+                            <constraint firstItem="DoX-1b-1mf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h5m-8b-KKB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentTimeLabel" destination="Nmh-3q-QSA" id="fdj-rN-LqT"/>
+                        <outlet property="progressBar" destination="DoX-1b-1mf" id="MX8-Kg-Xh6"/>
+                        <outlet property="remainingTimeLabel" destination="Nrd-kf-6yM" id="P82-Iw-WFY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
